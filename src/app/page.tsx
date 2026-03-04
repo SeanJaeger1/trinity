@@ -50,7 +50,7 @@ const documents = [
 export default function Home() {
   const [loading, setLoading] = useState<string | null>(null);
 
-  async function handleCheckout(product: "visa" | "bank_docs") {
+  async function handleCheckout(product: "visa" | "visa_plus_bank") {
     setLoading(product);
     try {
       const res = await fetch("/api/checkout", {
@@ -112,16 +112,27 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-blue-50 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+      <section className="relative pt-32 pb-28 px-6 min-h-[600px] flex items-center">
+        {/* Background image */}
+        <Image
+          src="/hero-thailand.jpg"
+          alt="Thailand temple backdrop"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+        {/* Content */}
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-block bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6 border border-white/20">
             Soft Skills Muay Thai DTV Visa
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
             Your 5-Year Thailand Visa,{" "}
-            <span className="text-primary">Made Simple</span>
+            <span className="text-blue-300">Made Simple</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed">
             TRINITY DTV specialises in securing 5-Year Destination Thailand
             Visas. We handle the complexity so you can focus on living, training,
             and experiencing everything Thailand has to offer.
@@ -129,13 +140,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#pricing"
-              className="bg-primary text-white px-8 py-3.5 rounded-lg font-medium hover:bg-primary-dark transition-colors text-lg"
+              className="bg-primary text-white px-8 py-3.5 rounded-lg font-medium hover:bg-primary-dark transition-colors text-lg shadow-lg"
             >
               Start Your Application
             </a>
             <a
               href="#process"
-              className="text-gray-600 px-8 py-3.5 rounded-lg font-medium hover:text-gray-900 transition-colors text-lg"
+              className="text-white/90 px-8 py-3.5 rounded-lg font-medium hover:text-white transition-colors text-lg border border-white/30 hover:border-white/50"
             >
               Learn More &darr;
             </a>
@@ -408,17 +419,17 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Bank Document */}
+            {/* Visa + Bank Docs */}
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Bank Document Assistance
+                Visa + Bank Document Assistance
               </h3>
               <p className="text-gray-600 text-sm mb-6">
-                Help preparing your financial documentation to meet visa
-                requirements
+                Full visa application service plus help preparing your financial
+                documentation
               </p>
               <div className="mb-8">
-                <span className="text-4xl font-bold text-gray-900">3,500</span>
+                <span className="text-4xl font-bold text-gray-900">33,500</span>
                 <span className="text-gray-500 ml-1">THB</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-gray-600">
@@ -426,27 +437,33 @@ export default function Home() {
                   <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
+                  Complete application handling
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Document preparation &amp; submission
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  30 Muay Thai training sessions
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
                   Financial document preparation
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Step-by-step guidance
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Meets all visa criteria
                 </li>
               </ul>
               <button
-                onClick={() => handleCheckout("bank_docs")}
-                disabled={loading === "bank_docs"}
+                onClick={() => handleCheckout("visa_plus_bank")}
+                disabled={loading === "visa_plus_bank"}
                 className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 cursor-pointer"
               >
-                {loading === "bank_docs" ? "Redirecting..." : "Pay Now"}
+                {loading === "visa_plus_bank" ? "Redirecting..." : "Pay Now"}
               </button>
             </div>
           </div>
