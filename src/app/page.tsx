@@ -545,6 +545,22 @@ export default function Home() {
             </div>
             <div>
               <label
+                htmlFor="whatsapp"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                WhatsApp Number
+              </label>
+              <input
+                type="tel"
+                name="whatsapp"
+                id="whatsapp"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors text-gray-900"
+                placeholder="+66 123 456 789"
+              />
+            </div>
+            <div>
+              <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
