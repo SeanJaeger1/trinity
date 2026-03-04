@@ -49,6 +49,28 @@ const documents = [
 
 export default function Home() {
   const [loading, setLoading] = useState<string | null>(null);
+  const [formResult, setFormResult] = useState("");
+
+  async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setFormResult("Sending...");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", "bee67fd0-1153-4901-b6cc-141a6b0b9d39");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setFormResult("Form Submitted Successfully");
+      form.reset();
+    } else {
+      setFormResult("Something went wrong. Please try again.");
+    }
+  }
 
   async function handleCheckout(product: "visa" | "visa_plus_bank") {
     setLoading(product);
@@ -98,12 +120,15 @@ export default function Home() {
             <a href="#pricing" className="hover:text-gray-900 transition-colors">
               Pricing
             </a>
+            <a href="#apply" className="hover:text-gray-900 transition-colors">
+              Apply
+            </a>
             <a href="#contact" className="hover:text-gray-900 transition-colors">
               Contact
             </a>
           </div>
           <a
-            href="#pricing"
+            href="#apply"
             className="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors"
           >
             Get Started
@@ -139,7 +164,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#pricing"
+              href="#apply"
               className="bg-primary text-white px-8 py-3.5 rounded-lg font-medium hover:bg-primary-dark transition-colors text-lg shadow-lg"
             >
               Start Your Application
@@ -467,6 +492,93 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Application Form */}
+      <section id="apply" className="py-20 px-6 bg-gray-50 scroll-mt-20">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Start Your Application
+            </h2>
+            <p className="text-gray-600">
+              Fill in your details and our team will get back to you within 24
+              hours
+            </p>
+          </div>
+          <form
+            onSubmit={handleFormSubmit}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 space-y-6"
+          >
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors text-gray-900"
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors text-gray-900"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Message
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                required
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors text-gray-900 resize-none"
+                placeholder="Tell us about your situation and any questions you have"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors cursor-pointer"
+            >
+              Submit Application
+            </button>
+            {formResult && (
+              <p
+                className={`text-center text-sm ${
+                  formResult.includes("Success")
+                    ? "text-green-600"
+                    : formResult === "Sending..."
+                    ? "text-gray-500"
+                    : "text-red-600"
+                }`}
+              >
+                {formResult}
+              </p>
+            )}
+          </form>
         </div>
       </section>
 
