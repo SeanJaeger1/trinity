@@ -405,10 +405,11 @@ export default function Home() {
               </p>
               <div className="mb-8">
                 <span className="text-4xl font-bold text-gray-900">
-                  30,000
+                  33,000
                 </span>
                 <span className="text-gray-500 ml-1">THB</span>
               </div>
+              <p className="text-xs text-green-600 font-medium mb-4">No hidden fees — visa application fee at the consulate is included</p>
               <ul className="space-y-3 mb-8 text-sm text-gray-600">
                 <li className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -454,9 +455,10 @@ export default function Home() {
                 documentation
               </p>
               <div className="mb-8">
-                <span className="text-4xl font-bold text-gray-900">33,500</span>
+                <span className="text-4xl font-bold text-gray-900">36,500</span>
                 <span className="text-gray-500 ml-1">THB</span>
               </div>
+              <p className="text-xs text-green-600 font-medium mb-4">No hidden fees — visa application fee at the consulate is included</p>
               <ul className="space-y-3 mb-8 text-sm text-gray-600">
                 <li className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
