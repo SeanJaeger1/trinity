@@ -8,13 +8,13 @@ const products = {
     name: "DTV Visa Application",
     description:
       "Full 5-Year Destination Thailand Visa application with 30 Muay Thai sessions",
-    amount: 3300000, // 33,000 THB in satang
+    amount: 3900000, // 39,000 THB in satang
   },
   visa_plus_bank: {
     name: "DTV Visa Application + Bank Document Assistance",
     description:
       "Full 5-Year Destination Thailand Visa application with 30 Muay Thai sessions and financial documentation preparation",
-    amount: 3650000, // 36,500 THB in satang
+    amount: 4300000, // 43,000 THB in satang
   },
 };
 

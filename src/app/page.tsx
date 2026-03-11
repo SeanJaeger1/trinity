@@ -405,7 +405,7 @@ export default function Home() {
               </p>
               <div className="mb-8">
                 <span className="text-4xl font-bold text-gray-900">
-                  33,000
+                  39,000
                 </span>
                 <span className="text-gray-500 ml-1">THB</span>
               </div>
@@ -455,7 +455,7 @@ export default function Home() {
                 documentation
               </p>
               <div className="mb-8">
-                <span className="text-4xl font-bold text-gray-900">36,500</span>
+                <span className="text-4xl font-bold text-gray-900">43,000</span>
                 <span className="text-gray-500 ml-1">THB</span>
               </div>
               <p className="text-xs text-green-600 font-medium mb-4">No hidden fees — visa application fee at the consulate is included</p>
